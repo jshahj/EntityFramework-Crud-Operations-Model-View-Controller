@@ -1,0 +1,38 @@
+﻿@model IEnumerable<MVCCrudEntityFramework.Models.ProductModel>
+
+@{
+    ViewBag.Title = "ProductList";
+}
+
+<h2>ProductList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Index")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProdImage)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProdName)
+        </td>
+        <td>
+            <img src="@Url.Content(item.ProdImage)" alt="Alternate Text" width="100" height="100"/>
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Index", new { id=item.ProdId }) |
+            @Html.ActionLink("Delete", "ProductDelete", new { id=item.ProdId })
+        </td>
+    </tr>
+}
+
+</table>
